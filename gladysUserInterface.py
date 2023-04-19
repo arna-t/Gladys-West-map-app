@@ -15,7 +15,7 @@ def runTests():
 	"""
 		tests some module functions
 	"""
-
+	
 	print("running a few tests")
 
 	average = compute.gpsAverage(4, 5)
@@ -42,6 +42,10 @@ def runApp(userName):
 		runs the app
 	"""
 
+	dist = None
+	currentValue = None
+	destinationValue = None
+
 	# loop until user types q
 	userQuit = False
 	while (not userQuit):
@@ -52,7 +56,12 @@ def runApp(userName):
 			create a function to print your menu and simply call it here.
 		"""
 		print("-- Welcome to the Gladys West Map App --")
-		print("Type t to run tests or q to quit")
+		#print("Type t to run tests or q to quit")
+		print("[c] to set current position")
+		print("[d] to set destination position")
+		print("[m] to map, which tells the distance")
+		print("[t] to run module tests")
+		print("[q] to quit")
 		print()
 
 		# get first character of input
@@ -66,8 +75,49 @@ def runApp(userName):
 			here students need to change and add to this code to
 			handle their menu options
 		"""
+
+		if firstChar == 'c':
+			# here function needs to be called
+			x = input("Please enter the x coordinate ")
+			y = input("Please enter the y coordinate ")
+			# sat = 
+			currentValue = satellite.gpsValue(x, y, sat)
+			# print(f"current position: {current}")
+			
+			if currentValue is None: 
+				print("Returned no value")
+			else:
+				if destinationValue is None:
+					print("Please enter for the destination")
+				else:
+					print("Please enter m to calculate distance")
+					#dist = compute.distance(currentValue, destinationValue)
+					#print(f"distance {dist}")
+			
+		elif firstChar == 'd':
+			# here another function that sets destination
+			x = input("Please enter the x coordinate ")
+			y = input("Please enter the y coordinate ")
+			destinationValue = satellite.gpsValue(x, y, sat)
+			# print(f"destination position: {destination}")
+
+			if destinationValue is None: 
+				print("Returned no value")
+			else:
+				if currentValue is None:
+					print("Please enter for the current position")
+				else:
+					print("Please enter m to calculate distance")
+					#print(f"distance {dist}")
+					#dist = compute.distance(current, destination)
+			
+		elif firstChar == 'm':
+			dist = compute.distance(currentValue, destinationValue)
+			print(f"distance: {dist}")
+			
+
 		# quit
-		if firstChar == 'q':
+		elif firstChar == 'q':
 			userQuit = True
 
 		# run some tests (this is part 1 of 2)
