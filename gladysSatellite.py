@@ -8,29 +8,28 @@ import json
 """
 
 
-def readSat(sat, pathToJSONDataFiles):
-	"""
-		reads satellite data from a json file
-		Students do NOT need to change the readSat function.
-	"""
+def readSat(satelliteName, pathToJSONDataFiles):
+    """
+        reads satellite data from a json file
+    """
 
-	# data file path
-	fileName = sat + "-satellite.json"
-	filePath = pathToJSONDataFiles + "/" + fileName
+    # data file path
+    fileName = satelliteName + "-satellite.json"
+    filePath = pathToJSONDataFiles + "/" + fileName
 
-	# open the file
-	try:
-		fileHandle = open(filePath)
-	except IOError:
-		print("ERROR: Unable to open the file " + filePath)
-		raise IOError
+    # open the file
+    try:
+        fileHandle = open(filePath)
+    except IOError:
+        print("ERROR: Unable to open the file " + filePath)
+        raise IOError
 
-	# print("filePath = ", filePath)
+    # print("filePath = ", filePath)
 
-	# read the file
-	data = json.load(fileHandle)
+    # read the file
+    data = json.load(fileHandle)
 
-	return data
+    return data
 
 
 def gpsValue(x, y, sat):
