@@ -2,72 +2,54 @@ import io
 import json
 
 """
-	Student: Gabriel Solomon
-	Module: gladysSatellite
-	Description: This module does …
+    Student: Joel Alvarado
+    Module: gladysSatellite
+    Description: This module provides gps data from satellites.
 """
 
 
-def readSat(sat, pathToJSONDataFiles):
-	"""
-		reads satellite data from a json file
-		Students do NOT need to change the readSat function.
-	"""
+def readSat(satelliteName, pathToJSONDataFiles):
+    """
+        reads satellite data from a json file
+    """
 
-	# data file path
-	fileName = sat + "-satellite.json"
-	filePath = pathToJSONDataFiles + "/" + fileName
+    # data file path
+    fileName = satelliteName + "-satellite.json"
+    filePath = pathToJSONDataFiles + "/" + fileName
 
-	# open the file
-	try:
-		fileHandle = open(filePath)
-	except IOError:
-		print("ERROR: Unable to open the file " + filePath)
-		raise IOError
+    # open the file
+    try:
+        fileHandle = open(filePath)
+    except IOError:
+        print("ERROR: Unable to open the file " + filePath)
+        raise IOError
 
-	# print("filePath = ", filePath)
+    # print("filePath = ", filePath)
 
-	# read the file
-	data = json.load(fileHandle)
+    # read the file
+    data = json.load(fileHandle)
 
-	return data
+    return data
 
 
-def gpsValue(x, y, sat):
-	"""
-		document your function definition here. what does it do?
-	"""
+def gpsValue(x, y, satelliteName):
+    """
+        Searches the data from satelliteName for the numerical value at coordinates x and y and returns that value.
 
-	"""
-		This first part of this function to read satelite data only read 
-		satellite data. students need to change the pathToJSONDataFiles 
-		variable so it works on your computer.
+        If the coordinates are not found in the satellite's data, None is returned.
+    """
 
-		this is *windows* path, not a mac path.
-		if you do not know what a path (on a computer) is, you should use google and
-		youtube to learn, or come to office hours so I can explain it to you.
+    pathToJSONDataFiles = "./data/"
 
-		students will need to change this pathToJSONDataFiles variable to point to
-		where you have the data files stoed on your computer.  If you do not
-		change it, the code will not "work".
+    # read the satellite data
+    satelliteData = readSat(satelliteName, pathToJSONDataFiles)
 
-		You can/should remove this long comment before you submit your work.  
-		I'm just giving advice to try to help you. Good luck!  -Gabriel :)
-	"""
-	pathToJSONDataFiles = "C:/Users/jerom/GitHub/evc-cit134a-python/gladys-west-map/data"
+    # loop through the data
+    for coordinatesInfo in satelliteData:
+        # if the coordinates match, return the value
+        if coordinatesInfo["x"] == x and coordinatesInfo["y"] == y:
+            value = coordinatesInfo["value"]
+            return value
 
-	# read the satellite data
-	data = readSat(sat, pathToJSONDataFiles)
-
-	"""
-		delete the remaining code *in this function* and replace it with
-		your own code. add more code to do what the assignment asks of you.
-
-		tip: here is where students need to look through the data variable
-		read from the satellites and find a matching x,y to return the value.
-		to understand better, open and look at the json satellite data in
-		vs code.
-	"""
-	value = 1234
-
-	return value
+    # The coordinates were not found
+    return None
