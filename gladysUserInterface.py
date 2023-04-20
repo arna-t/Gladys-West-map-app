@@ -5,9 +5,10 @@ import gladysSatellite as satellite
 import gladysUserLogin as userLogin
 
 """
-	Student: Gabriel Solomon
+	Student: Arna Togayeva
 	Module: gladysUserInterface
-	Description: This module does …
+	Description: This module presents a text-based menu for users and asks for their input to perform some operations. 
+	This is a main module that calls functions and glues other modules together. 
 """
 
 
@@ -42,9 +43,15 @@ def runApp(userName):
 		runs the app
 	"""
 
-	dist = None
 	currentValue = None
 	destinationValue = None
+	xCurrent = -1
+	yCurrent = -1
+	xDestination = -1
+	yDestination = -1
+	destination = [-1,-1]
+
+	dist = 0.00
 
 	# loop until user types q
 	userQuit = False
@@ -56,7 +63,7 @@ def runApp(userName):
 			create a function to print your menu and simply call it here.
 		"""
 		print("-- Welcome to the Gladys West Map App --")
-		#print("Type t to run tests or q to quit")
+		print("----------------------------------------")
 		print("[c] to set current position")
 		print("[d] to set destination position")
 		print("[m] to map, which tells the distance")
@@ -64,8 +71,12 @@ def runApp(userName):
 		print("[q] to quit")
 		print()
 
+		print(f"Current position: x = {xCurrent}, y = {yCurrent}")
+		print(f"Destination position: x = {xDestination}, y = {yDestination}")
+		print(f"Distance: {dist}")
+
 		# get first character of input
-		userInput = input("Enter a command:")
+		userInput = input("Enter a command: ")
 		lowerInput = userInput.lower()
 		firstChar = lowerInput[0:1]
 
@@ -77,44 +88,63 @@ def runApp(userName):
 		"""
 
 		if firstChar == 'c':
+
+			while True:
+
 			# here function needs to be called
-			x = input("Please enter the x coordinate ")
-			y = input("Please enter the y coordinate ")
-			# sat = 
-			currentValue = satellite.gpsValue(x, y, sat)
+				xCurrent = input("Please enter a x coordinate (between 0-99) ")
+				yCurrent = input("Please enter a y coordinate (between 0-99) ")
+				if (xCurrent > 99 or xCurrent < 0) or (yCurrent > 99 or yCurrent < 0):
+					print("The values you entered are outside of range 0-99")	
+				else: 
+					break
+
+			#currentValue = satellite.gpsValue(xCurrent, yCurrent, "altitude")  # do we need the value?
 			# print(f"current position: {current}")
 			
-			if currentValue is None: 
-				print("Returned no value")
-			else:
-				if destinationValue is None:
-					print("Please enter for the destination")
-				else:
-					print("Please enter m to calculate distance")
-					#dist = compute.distance(currentValue, destinationValue)
+			
+			#if currentValue is None: 
+			#	print("Values you entered are not found in Satelite data")
+			#else:
+				#if destinationValue is None:
+				#	print("")
+				#else:
+
+			current = []
+			current.append[xCurrent]
+			current.append[yCurrent]
+			# dist = compute.distance(current, destination)
+					
 					#print(f"distance {dist}")
 			
 		elif firstChar == 'd':
+			while True:
 			# here another function that sets destination
-			x = input("Please enter the x coordinate ")
-			y = input("Please enter the y coordinate ")
-			destinationValue = satellite.gpsValue(x, y, sat)
+				xDestination = input("Please enter a x coordinate (between 0-99) ")
+				yDestination = input("Please enter a y coordinate (between 0-99) ")
+				if (xDestination > 99 or xDestination < 0) or (yDestination > 99 or yDestination < 0):
+					print("The values you entered are outside of range 0-99")	
+				else: 
+					break
+			
+			# destinationValue = satellite.gpsValue(xDestination, yDestination, sat)
 			# print(f"destination position: {destination}")
+			
+			#if destinationValue is None: 
+			#	print("No value found. Please enter a valid number")
+			#else:
+			#	if currentValue is None:
+			#		print("No value found. Please enter a valid number")
+			#	else:
 
-			if destinationValue is None: 
-				print("Returned no value")
-			else:
-				if currentValue is None:
-					print("Please enter for the current position")
-				else:
-					print("Please enter m to calculate distance")
-					#print(f"distance {dist}")
-					#dist = compute.distance(current, destination)
+			destination = []
+			destination.append[xCurrent]
+			destination.append[yCurrent]
+			dist = compute.distance(current, destination)
 			
 		elif firstChar == 'm':
-			dist = compute.distance(currentValue, destinationValue)
+			dist = compute.distance(current, destination)
 			print(f"distance: {dist}")
-			
 
 		# quit
 		elif firstChar == 'q':
@@ -126,6 +156,7 @@ def runApp(userName):
 
 		else:
 			print("ERROR: " + firstChar + " is not a valid command")
+
 
 	print("\n")
 	print("Thank you for using the Gladys West Map App!")
