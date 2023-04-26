@@ -138,8 +138,8 @@ def runApp(userName):
 			#	else:
 
 			destination = []
-			destination.append[xCurrent]
-			destination.append[yCurrent]
+			destination.append[xDestination]
+			destination.append[yDestination]
 			dist = compute.distance(current, destination)
 			
 		elif firstChar == 'm':

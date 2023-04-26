@@ -32,5 +32,6 @@ def distance(current, destination):
 	xDestination = destination[0]
 	yDestination = destination[1]
 
-	return math.sqrt(gpsAverage(xCurrent, yCurrent)**2 + gpsAverage(xDestination, yDestination)**2)
+	distance = math.sqrt(gpsAverage(xCurrent, yCurrent)**2 + gpsAverage(xDestination, yDestination)**2)
+	return distance
 # end of code by Theanh Nguyen
