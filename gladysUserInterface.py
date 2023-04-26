@@ -72,6 +72,9 @@ def runApp(userName):
 	userQuit = False
 	while (not userQuit):
 
+		#calling the menu function
+		menu()
+
 		# get first character of input
 		userInput = input("Enter a command: ")
 		lowerInput = userInput.lower()
