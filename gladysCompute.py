@@ -4,12 +4,12 @@ import math
 import gladysSatellite as satellite
 
 """
-	Student: Naomi Gong, Theanh Nguyen, Nataly Infante
+	Student: Naomi Gong, Theanh Nguyen
 	Module: gladysCompute
 	Description: This module does the calculations needed to know the current distance and destination distance. 
 """
 
-
+# start of code by Naomi Gong
 def gpsAverage(x, y):
 	"""
 		This calculates the average gps distance based on the coordinates given
@@ -20,8 +20,9 @@ def gpsAverage(x, y):
 	average = value / 4
 
 	return average
+# end of code by Naomi Gong
 
-
+# start of code by Theanh Nguyen
 def distance(current, destination):
 	"""
 		This calculates the distance between the current location and the destination location
@@ -32,3 +33,4 @@ def distance(current, destination):
 	yDestination = destination[1]
 
 	return math.sqrt(gpsAverage(xCurrent, yCurrent)**2 + gpsAverage(xDestination, yDestination)**2)
+# end of code by Theanh Nguyen
