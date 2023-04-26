@@ -43,25 +43,17 @@ def runApp(userName):
 		runs the app
 	"""
 
-	currentValue = None
-	destinationValue = None
+	#currentValue = None
+	#destinationValue = None
 	xCurrent = -1
 	yCurrent = -1
 	xDestination = -1
 	yDestination = -1
 	destination = [-1,-1]
-
 	dist = 0.00
 
-	# loop until user types q
-	userQuit = False
-	while (not userQuit):
+	def menu():
 
-		# menu
-		"""
-			here student needs to print their own menu. or, to do better, 
-			create a function to print your menu and simply call it here.
-		"""
 		print("-- Welcome to the Gladys West Map App --")
 		print("----------------------------------------")
 		print("[c] to set current position")
@@ -75,33 +67,39 @@ def runApp(userName):
 		print(f"Destination position: x = {xDestination}, y = {yDestination}")
 		print(f"Distance: {dist}")
 
+
+	# loop until user types q
+	userQuit = False
+	while (not userQuit):
+
 		# get first character of input
 		userInput = input("Enter a command: ")
 		lowerInput = userInput.lower()
 		firstChar = lowerInput[0:1]
-
+		
+		
 		# menu choices, use a switch-like if-elif control structure
 
-		"""
-			here students need to change and add to this code to
-			handle their menu options
-		"""
 
 		if firstChar == 'c':
 
-			while True:
+			#is_valid = True
+			#while not is_valid:
 
-			# here function needs to be called
-				xCurrent = input("Please enter a x coordinate (between 0-99) ")
-				yCurrent = input("Please enter a y coordinate (between 0-99) ")
-				if (xCurrent > 99 or xCurrent < 0) or (yCurrent > 99 or yCurrent < 0):
-					print("The values you entered are outside of range 0-99")	
-				else: 
-					break
+			xCurrent = input("Please enter a x coordinate (between 0-99): ")
+			yCurrent = input("Please enter a y coordinate (between 0-99): ")
+			if (xCurrent > 99 or xCurrent < 0) or (yCurrent > 99 or yCurrent < 0):
+				print("The values you entered are outside of range 0-99")	
+			else: 
+				current = []
+				current.append[xCurrent]
+				current.append[yCurrent]
+				dist = compute.distance(current, destination)
+				
+					
 
-			#currentValue = satellite.gpsValue(xCurrent, yCurrent, "altitude")  # do we need the value?
-			# print(f"current position: {current}")
-			
+			#currentValue = satellite.gpsValue(xCurrent, yCurrent, "altitude")  # do we need the value? only to check 
+																				# if the user input found in sat data
 			
 			#if currentValue is None: 
 			#	print("Values you entered are not found in Satelite data")
@@ -109,38 +107,32 @@ def runApp(userName):
 				#if destinationValue is None:
 				#	print("")
 				#else:
-
-			current = []
-			current.append[xCurrent]
-			current.append[yCurrent]
-			# dist = compute.distance(current, destination)
-					
+			
 					#print(f"distance {dist}")
 			
 		elif firstChar == 'd':
-			while True:
-			# here another function that sets destination
+			
 				xDestination = input("Please enter a x coordinate (between 0-99) ")
 				yDestination = input("Please enter a y coordinate (between 0-99) ")
 				if (xDestination > 99 or xDestination < 0) or (yDestination > 99 or yDestination < 0):
 					print("The values you entered are outside of range 0-99")	
 				else: 
-					break
+					destination = []
+					destination.append[xDestination]
+					destination.append[yDestination ]
+					dist = compute.distance(current, destination)
+					
 			
-			# destinationValue = satellite.gpsValue(xDestination, yDestination, sat)
+			#destinationValue = satellite.gpsValue(xDestination, yDestination, "altitude")
 			# print(f"destination position: {destination}")
 			
-			#if destinationValue is None: 
+			# if destinationValue is None: 
 			#	print("No value found. Please enter a valid number")
 			#else:
 			#	if currentValue is None:
 			#		print("No value found. Please enter a valid number")
 			#	else:
-
-			destination = []
-			destination.append[xCurrent]
-			destination.append[yCurrent]
-			dist = compute.distance(current, destination)
+	
 			
 		elif firstChar == 'm':
 			dist = compute.distance(current, destination)
