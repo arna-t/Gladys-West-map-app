@@ -3,15 +3,15 @@ import io
 import gladysSatellite as satellite
 
 """
-	Student: Gabriel Solomon
+	Student: Naomi Gong, Theanh Nguyen, Natalie Ly
 	Module: gladysCompute
-	Description: This module does …
+	Description: This module does Module 5
 """
 
 
 def gpsAverage(x, y):
 	"""
-		document your function definition here. what does it do?
+		This calculates the average gps distance based on the coordinates given
 	"""
 
 	"""
@@ -19,9 +19,9 @@ def gpsAverage(x, y):
 		your own code. add more code to do what the assignment asks of you.
 	"""
 
-	value = satellite.gpsValue(5, 6, "altitude")
+	value = satellite.gpsValue(x, y, "altitude") + satellite.gpsValue(x,y, "longitude") + satellite.gpsValue(x,y, "latitude") + satellite.gpsValue(x,y, "time")
 
-	average = value / 2
+	average = value / 4
 
 	return average
 
