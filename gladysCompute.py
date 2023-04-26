@@ -1,4 +1,5 @@
 import io
+import math
 
 import gladysSatellite as satellite
 
@@ -23,13 +24,11 @@ def gpsAverage(x, y):
 
 def distance(current, destination):
 	"""
-		document your function definition here. what does it do?
+		This calculates the distance between the current location and the destination location
 	"""
+	xCurrent = current[0]
+	yCurrent = current[1]
+	xDestination = destination[0]
+	yDestination = destination[1]
 
-	"""
-		delete the remaining code *in this function* and replace it with
-		your own code. add more code to do what the assignment asks of you.
-	"""
-	distance = gpsAverage(3, 4)
-
-	return distance
+	return math.sqrt(gpsAverage(xCurrent, yCurrent)**2 + gpsAverage(xDestination, yDestination)**2)
