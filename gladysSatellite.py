@@ -24,8 +24,6 @@ def readSat(satelliteName, pathToJSONDataFiles):
         print("ERROR: Unable to open the file " + filePath)
         raise IOError
 
-    # print("filePath = ", filePath)
-
     # read the file
     data = json.load(fileHandle)
 
@@ -36,9 +34,11 @@ def gpsValue(x, y, satelliteName):
     """
         Searches the data from satelliteName for the numerical value at coordinates x and y and returns that value.
 
-        If the coordinates are not found in the satellite's data, None is returned.
+        Returns None if the coordinates are not found in the satellite's data. Throws IOError if the data file for
+        satelliteName cannot be opened.
     """
 
+    # path to satellite data files
     pathToJSONDataFiles = "./data/"
 
     # read the satellite data
