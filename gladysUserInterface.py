@@ -22,7 +22,6 @@ def runTests():
 	tests.runTests()
 
 
-
 def start():
 	"""
 		logs the user in, and runs the app
@@ -54,7 +53,7 @@ def runApp(userName):
 		print()
 		print(f"Current position:     x = {xCurrent}, y = {yCurrent}")
 		print(f"Destination position: x = {xDestination}, y = {yDestination}")
-		print(f"Distance: {dist}")
+		print(f"Distance: {round(dist,2)}")
 		print()
 		print("[c] to set current position")
 		print("[d] to set destination position")
@@ -83,9 +82,6 @@ def runApp(userName):
 
 		if firstChar == 'c':
 
-			#is_valid = True
-			#while not is_valid:
-
 			xCurrent = int(input("Please enter a x coordinate (between 0-99): "))
 			yCurrent = int(input("Please enter a y coordinate (between 0-99): "))
 			if (xCurrent > 99 or xCurrent < 0) or (yCurrent > 99 or yCurrent < 0):
@@ -96,8 +92,6 @@ def runApp(userName):
 				current.append(yCurrent)
 				dist = compute.distance(current, destination)
 				
-			
-					#print(f"distance {dist}")
 			
 		elif firstChar == 'd':
 			
@@ -114,7 +108,8 @@ def runApp(userName):
 			
 		elif firstChar == 'm':
 			dist = compute.distance(current, destination)
-			print(f"distance: {dist}")
+			print(f"distance: {round(dist,2)}")
+
 
 		# quit
 		elif firstChar == 'q':
