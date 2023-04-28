@@ -15,6 +15,7 @@ def runTests():
     runTest(gpsAverage_integerInput_equalsExpected)
     runTest(login_whenCalled_logsUserIn)
     runTest(readSat_validSatelliteName_returnsIterableData)
+    runTest(gpsValue_validInput_equalsExpected)
 
 
 def runTest(test):
@@ -82,4 +83,29 @@ def readSat_validSatelliteName_returnsIterableData():
 
     print("test passed")
     print(f'total coordinates entries: {totalDataEntries}')
+    print()
+
+
+def gpsValue_validInput_equalsExpected():
+    print("running gpsValue test")
+
+    # arguments
+    x = 75
+    y = 50
+    satelliteName = "time"
+
+    # get value
+    value = satellite.gpsValue(x, y, satelliteName)
+
+    # from time-satellite.json
+    expected = 581
+
+    if expected == value:
+        print("test passed")
+        print(f'gpsValue({x}, {y}, {satelliteName}) = {value}')
+    else:
+        print(f'test failed')
+        print(f'arguments: x = {75} y = {50} satelliteName = {satelliteName}')
+        print(f'expected value: {expected} actual value: {value}')
+
     print()
