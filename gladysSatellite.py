@@ -10,7 +10,8 @@ import json
 
 def readSat(satelliteName, pathToJSONDataFiles):
     """
-        reads satellite data from a json file
+        reads satellite data from a json file. Throws IOError if the data file for
+        satelliteName cannot be opened.
     """
 
     # data file path
@@ -32,9 +33,9 @@ def readSat(satelliteName, pathToJSONDataFiles):
 
 def gpsValue(x, y, satelliteName):
     """
-        Searches the data from satelliteName for the numerical value at coordinates x and y and returns that value.
+        Searches the data from satelliteName for the numerical gps value at coordinates x and y and returns that value.
 
-        Returns None if the coordinates are not found in the satellite's data. Throws IOError if the data file for
+        Returns 0 if the coordinates are not found in the satellite's data. Throws IOError if the data file for
         satelliteName cannot be opened.
     """
 
@@ -52,4 +53,4 @@ def gpsValue(x, y, satelliteName):
             return value
 
     # The coordinates were not found
-    return None
+    return 0
