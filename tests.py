@@ -13,6 +13,7 @@ import gladysUserLogin as userLogin
 
 def runTests():
     runTest(gpsAverage_integerInput_equalsExpected)
+    runTest(login_whenCalled_logsUserIn)
 
 
 def runTest(test):
@@ -43,4 +44,14 @@ def gpsAverage_integerInput_equalsExpected():
         print(f'arguments: x = {x} y = {y}')
         print(f'expected average: {expected} actual average: {average}')
 
+    print()
+
+
+def login_whenCalled_logsUserIn():
+    print("running user login test")
+
+    userName = userLogin.login()
+
+    print("test passed")
+    print(f'userName: {userName}')
     print()
