@@ -3,6 +3,7 @@ import io
 import gladysCompute as compute
 import gladysSatellite as satellite
 import gladysUserLogin as userLogin
+import tests as tests
 
 """
 	Student: Arna Togayeva
@@ -18,11 +19,8 @@ def runTests():
 	"""
 	
 	print("running a few tests")
+	tests.runTests()
 
-	average = compute.gpsAverage(4, 5)
-	print("average = ", average)
-
-	print("hello!")
 
 
 def start():
@@ -44,6 +42,7 @@ def runApp(userName):
 	yCurrent = -1
 	xDestination = -1
 	yDestination = -1
+	current = [-1, -1]
 	destination = [-1,-1]
 	dist = 0.00
 
@@ -128,11 +127,6 @@ def runApp(userName):
 		else:
 			print("ERROR: " + firstChar + " is not a valid command")
 
-		print()
-		menu()
-		userInput = input("Enter a command: ")
-		lowerInput = userInput.lower()
-		firstChar = lowerInput[0:1]
 
 	print("\n")
 	print("Thank you for using the Gladys West Map App!")
