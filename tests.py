@@ -14,6 +14,7 @@ import gladysUserLogin as userLogin
 def runTests():
     runTest(gpsAverage_integerInput_equalsExpected)
     runTest(login_whenCalled_logsUserIn)
+    runTest(readSat_validSatelliteName_returnsIterableData)
 
 
 def runTest(test):
@@ -54,4 +55,31 @@ def login_whenCalled_logsUserIn():
 
     print("test passed")
     print(f'userName: {userName}')
+    print()
+
+
+def readSat_validSatelliteName_returnsIterableData():
+    print("running readSat test")
+
+    # arguments
+    satelliteName = "longitude"
+    pathToJSONDataFiles = "./data/"
+
+    # get data
+    data = satellite.readSat(satelliteName, pathToJSONDataFiles)
+
+    # data should be iterable
+    try:
+        satelliteData = iter(data)
+    except TypeError as typeError:
+        print("test failed. no suitable satellite data found. data should be iterable.\n")
+        return
+
+    totalDataEntries = 0
+
+    for _ in satelliteData:
+        totalDataEntries += 1
+
+    print("test passed")
+    print(f'total coordinates entries: {totalDataEntries}')
     print()
